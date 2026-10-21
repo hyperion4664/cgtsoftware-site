@@ -1,19 +1,202 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="tr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
 <title>CGT Software</title>
+<meta name="description" content="CGT Software: mobil uygulamalar ve oyunlar geliştiren tek kişilik yazılım stüdyosu.">
+<link rel="icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#0f172a;color:#e5e7eb;font-family:Arial,Helvetica,sans-serif;text-align:center}
-h1{color:#fff;font-size:40px;margin:0 0 12px}
-p{color:#9ca3af;margin:0}
+/* Layout: a studio ledger. One narrow column, products set as rows of a register, quiet everywhere else. */
+:root{
+  --bg:#EEF1F3;
+  --surface:#E3E8EB;
+  --fg:#14202B;
+  --muted:#4F6270;
+  --line:#C5CED4;
+  --accent:#1D5C78;
+  --accent-fg:#FFFFFF;
+  --soon:#8A5A12;
+  --font-display:"Familjen Grotesk","Helvetica Neue",Arial,sans-serif;
+  --font-body:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0E151B;--surface:#16212A;--fg:#E4EBEF;--muted:#9AAEBB;--line:#2A3944;
+    --accent:#74BAD4;--accent-fg:#0E151B;--soon:#E0AE5E;color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0E151B;--surface:#16212A;--fg:#E4EBEF;--muted:#9AAEBB;--line:#2A3944;
+  --accent:#74BAD4;--accent-fg:#0E151B;--soon:#E0AE5E;color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--bg);color:var(--fg);
+  font:400 16px/1.6 var(--font-body);
+  padding-block:0 48px;
+  padding-left:max(20px,env(safe-area-inset-left,0px));
+  padding-right:max(20px,env(safe-area-inset-right,0px));
+}
+.wrap{max-width:760px;margin:0 auto}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+.mono{font-family:var(--font-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+
+header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:24px;border-bottom:1px solid var(--line)}
+.mark{font:700 18px/1 var(--font-display);letter-spacing:-.01em;color:var(--fg);text-decoration:none}
+.lang{display:flex;gap:2px;font-family:var(--font-mono);font-size:12px}
+.lang button{font:inherit;background:none;border:1px solid transparent;color:var(--muted);padding:6px 10px;cursor:pointer;border-radius:2px}
+.lang button[aria-pressed="true"]{color:var(--fg);border-color:var(--line);background:var(--surface)}
+
+.hero{padding-block:64px 56px}
+h1{font:700 clamp(36px,8vw,60px)/1.04 var(--font-display);letter-spacing:-.02em;margin:0 0 20px;text-wrap:balance}
+.lede{max-width:56ch;margin:0;color:var(--muted);font-size:18px;line-height:1.55}
+
+section{padding-block:40px;border-top:1px solid var(--line)}
+h2{margin:0 0 24px;font:500 12px/1 var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+
+.ledger{display:grid;gap:0}
+.row{display:grid;grid-template-columns:minmax(0,1fr);gap:8px;padding-block:20px;border-bottom:1px solid var(--line)}
+.row:first-child{padding-top:0}
+.row:last-child{border-bottom:0;padding-bottom:0}
+.row h3{margin:0;font:600 26px/1.15 var(--font-display);letter-spacing:-.01em}
+.row p{margin:0;max-width:54ch}
+.meta{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center}
+.tag{font-family:var(--font-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.status{font-family:var(--font-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--soon)}
+.links{display:flex;flex-wrap:wrap;gap:4px 18px;font-size:14px}
+
+.services{display:grid;gap:16px;margin:0;padding:0;list-style:none}
+.services li{padding-left:16px;border-left:2px solid var(--line)}
+.services b{display:block;font:600 17px/1.3 var(--font-display)}
+.services span{color:var(--muted)}
+
+.mail{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+.mail code{font:500 17px/1.4 var(--font-mono);overflow-wrap:anywhere;user-select:all}
+.btn{font:500 14px/1 var(--font-body);background:var(--accent);color:var(--accent-fg);border:0;padding:11px 16px;border-radius:3px;cursor:pointer}
+.note{margin:12px 0 0;color:var(--muted);font-size:14px}
+
+footer{padding-top:32px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;font-size:14px;color:var(--muted)}
+footer nav{display:flex;flex-wrap:wrap;gap:4px 18px}
+
+@media (min-width:640px){
+  .row{grid-template-columns:minmax(0,1fr) 180px;column-gap:32px;align-items:start}
+  .row .side{grid-column:2;grid-row:1 / span 3;display:grid;gap:6px;justify-items:start}
+  .row .main{grid-column:1}
+  .hero{padding-block:88px 72px}
+}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto;transition:none}}
 </style>
 </head>
 <body>
-<div>
-<h1>CGT Software</h1>
-<p>Mobile apps &amp; software by Coşkun Tıraş. New site coming soon.</p>
+<div class="wrap">
+  <header>
+    <a class="mark" href="/">CGT Software</a>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" id="l-tr" aria-pressed="true">TR</button>
+      <button type="button" id="l-en" aria-pressed="false">EN</button>
+    </div>
+  </header>
+
+  <main>
+    <div class="hero">
+      <h1 data-i="h1">Telefon için uygulamalar ve oyunlar.</h1>
+      <p class="lede" data-i="lede">CGT Software, Türkiye'den çalışan tek kişilik bir yazılım stüdyosu. Kendi ürünlerimizi geliştiriyor, seçili projeler için web, mobil ve yapay zekâ işleri yapıyoruz.</p>
+    </div>
+
+    <section id="urunler">
+      <h2 data-i="h-products">Ürünler</h2>
+      <div class="ledger">
+        <article class="row">
+          <div class="main">
+            <h3>Exerank</h3>
+            <p data-i="exerank">Görevlerini netleştiren, puan, lig sıralaması ve seri takibiyle ilerlemeni sağlayan performans uygulaması.</p>
+          </div>
+          <div class="side">
+            <span class="tag">iOS · Android</span>
+            <div class="links">
+              <a href="https://cgtsoftware.com/exerank/privacy/" data-i="privacy">Gizlilik</a>
+              <a href="https://cgtsoftware.com/exerank/terms/" data-i="terms">Şartlar</a>
+            </div>
+          </div>
+        </article>
+        <article class="row">
+          <div class="main">
+            <h3>Signal Station</h3>
+            <p data-i="signal">Gerçek kazalardan esinlenen kurgu dosyalarını telsiz kayıtları ve belgelerle inceleyip nedeni kanıtlardan kurduğun bir dedüksiyon oyunu.</p>
+          </div>
+          <div class="side">
+            <span class="tag">iOS</span>
+            <span class="status" data-i="soon">Yakında</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="hizmetler">
+      <h2 data-i="h-services">Hizmetler</h2>
+      <ul class="services">
+        <li><b data-i="s1t">Web siteleri</b><span data-i="s1d">Hızlı, sade, telefonda iyi çalışan siteler.</span></li>
+        <li><b data-i="s2t">Mobil uygulamalar</b><span data-i="s2d">React Native ve Expo ile iOS ve Android uygulamaları.</span></li>
+        <li><b data-i="s3t">Yapay zekâ entegrasyonu</b><span data-i="s3d">Ürünlerine yapay zekâ özellikleri ekleme.</span></li>
+      </ul>
+    </section>
+
+    <section id="iletisim">
+      <h2 data-i="h-contact">İletişim</h2>
+      <div class="mail">
+        <code id="addr">cgtsoftware.destek@gmail.com</code>
+        <button class="btn" type="button" id="copy" data-i="copy">Kopyala</button>
+      </div>
+      <p class="note"><a href="mailto:cgtsoftware.destek@gmail.com" data-i="write">E-posta uygulamanda aç</a></p>
+    </section>
+  </main>
+
+  <footer>
+    <span>© 2026 CGT Software</span>
+    <nav>
+      <a href="https://cgtsoftware.com/exerank/privacy/">Exerank <span data-i="privacy-l">gizlilik</span></a>
+      <a href="https://cgtsoftware.com/exerank/terms/">Exerank <span data-i="terms-l">şartlar</span></a>
+    </nav>
+  </footer>
 </div>
+<script>
+(function(){
+  var T={
+    tr:{h1:"Telefon için uygulamalar ve oyunlar.",lede:"CGT Software, Türkiye'den çalışan tek kişilik bir yazılım stüdyosu. Kendi ürünlerimizi geliştiriyor, seçili projeler için web, mobil ve yapay zekâ işleri yapıyoruz.","h-products":"Ürünler",exerank:"Görevlerini netleştiren, puan, lig sıralaması ve seri takibiyle ilerlemeni sağlayan performans uygulaması.",signal:"Gerçek kazalardan esinlenen kurgu dosyalarını telsiz kayıtları ve belgelerle inceleyip nedeni kanıtlardan kurduğun bir dedüksiyon oyunu.",soon:"Yakında",privacy:"Gizlilik",terms:"Şartlar","privacy-l":"gizlilik","terms-l":"şartlar","h-services":"Hizmetler",s1t:"Web siteleri",s1d:"Hızlı, sade, telefonda iyi çalışan siteler.",s2t:"Mobil uygulamalar",s2d:"React Native ve Expo ile iOS ve Android uygulamaları.",s3t:"Yapay zekâ entegrasyonu",s3d:"Ürünlerine yapay zekâ özellikleri ekleme.","h-contact":"İletişim",copy:"Kopyala",copied:"Kopyalandı",write:"E-posta uygulamanda aç"},
+    en:{h1:"Apps and games for your phone.",lede:"CGT Software is a one-person software studio working from Turkey. We build our own products and take on selected web, mobile and AI projects.","h-products":"Products",exerank:"A performance app that sharpens your tasks and keeps you moving with points, league rankings and streaks.",signal:"A deduction game where you work through fictional case files inspired by real accidents and build the cause from radio logs and documents.",soon:"Coming soon",privacy:"Privacy",terms:"Terms","privacy-l":"privacy","terms-l":"terms","h-services":"Services",s1t:"Websites",s1d:"Fast, plain sites that work well on a phone.",s2t:"Mobile apps",s2d:"iOS and Android apps built with React Native and Expo.",s3t:"AI integration",s3d:"Adding AI features to your product.","h-contact":"Contact",copy:"Copy",copied:"Copied",write:"Open in your email app"}
+  };
+  var cur="tr";
+  function apply(l){
+    cur=l;
+    document.documentElement.lang=l;
+    var els=document.querySelectorAll("[data-i]");
+    for(var i=0;i<els.length;i++){var k=els[i].getAttribute("data-i");if(T[l][k]!==undefined)els[i].textContent=T[l][k];}
+    document.getElementById("l-tr").setAttribute("aria-pressed",l==="tr");
+    document.getElementById("l-en").setAttribute("aria-pressed",l==="en");
+    try{localStorage.setItem("cgt-lang",l);}catch(e){}
+  }
+  var start="tr";
+  try{var s=localStorage.getItem("cgt-lang");if(s==="tr"||s==="en")start=s;else if(!/^tr/i.test(navigator.language||""))start="en";}catch(e){if(!/^tr/i.test(navigator.language||""))start="en";}
+  if(start!=="tr")apply(start);
+  document.getElementById("l-tr").onclick=function(){apply("tr");};
+  document.getElementById("l-en").onclick=function(){apply("en");};
+  var btn=document.getElementById("copy");
+  btn.onclick=function(){
+    var txt=document.getElementById("addr").textContent;
+    function done(){btn.textContent=T[cur].copied;setTimeout(function(){btn.textContent=T[cur].copy;},1600);}
+    function fallback(){var r=document.createRange();r.selectNodeContents(document.getElementById("addr"));var sel=window.getSelection();sel.removeAllRanges();sel.addRange(r);}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(done,fallback);}else{fallback();}
+  };
+})();
+</script>
 </body>
 </html>
