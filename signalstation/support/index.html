@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Signal Station Support</title>
+<meta name="description" content="Help and contact for Signal Station, a deduction game by CGT Software.">
+<link rel="icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: contact first, then plain questions and answers in one readable column. */
+:root{
+  --bg:#EFF1F5;--panel:#FFFFFF;--ink:#0F1730;--muted:#566080;--line:#D3D8E3;--accent:#2A47D6;--accent-ink:#FFFFFF;
+  --f-display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
+  --f-body:"Hanken Grotesk","Helvetica Neue",Arial,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#090D1C;--panel:#111833;--ink:#EAEEFB;--muted:#9AA5C8;--line:#222B4F;--accent:#8FA3FF;--accent-ink:#090D1C;color-scheme:dark}
+}
+:root[data-theme="dark"]{--bg:#090D1C;--panel:#111833;--ink:#EAEEFB;--muted:#9AA5C8;--line:#222B4F;--accent:#8FA3FF;--accent-ink:#090D1C;color-scheme:dark}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.65 var(--f-body);padding-block:0 40px;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.wrap{max-width:720px;margin:0 auto}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
+header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:22px}
+.brand{font:800 19px/1 var(--f-display);letter-spacing:-.02em;color:var(--ink);text-decoration:none}
+.brand i{font-style:normal;color:var(--accent)}
+nav.top{display:flex;gap:20px;font-size:15px}
+nav.top a{color:var(--muted);text-decoration:none}
+nav.top a:hover,nav.top a[aria-current]{color:var(--ink)}
+.eyebrow{font:500 12px/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+h1{margin:18px 0 10px;font:800 clamp(34px,8vw,56px)/1 var(--f-display);letter-spacing:-.04em;text-wrap:balance}
+.lede{margin:0 0 28px;color:var(--muted);font-size:19px;max-width:48ch}
+.contact{background:var(--accent);color:var(--accent-ink);border-radius:16px;padding:24px}
+.contact p{margin:0 0 14px}
+.mail{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+.mail code{font:500 clamp(16px,3.6vw,20px)/1.3 var(--f-mono);overflow-wrap:anywhere;user-select:all}
+.btn{font:600 14px/1 var(--f-body);background:var(--accent-ink);color:var(--accent);border:0;padding:11px 18px;border-radius:999px;cursor:pointer}
+.contact .open{display:inline-block;margin-top:14px;font-size:15px;color:inherit}
+.contact .small{margin:14px 0 0;font-size:14px;opacity:.85}
+h2{margin:44px 0 6px;font:700 26px/1.2 var(--f-display);letter-spacing:-.02em}
+.qa{border-top:1px solid var(--line);padding-block:18px}
+.qa:first-of-type{margin-top:12px}
+.qa h3{margin:0 0 6px;font:700 19px/1.3 var(--f-display);letter-spacing:-.01em}
+.qa p{margin:0;color:var(--muted)}
+.qa p+p{margin-top:10px}
+footer{margin-top:56px;padding-top:28px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;font-size:14px;color:var(--muted)}
+footer nav{display:flex;flex-wrap:wrap;gap:4px 18px}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="brand" href="/">CGT<i>.</i>Software</a>
+    <nav class="top" aria-label="Signal Station">
+      <a href="/signalstation/privacy/">Privacy</a>
+      <a href="/signalstation/support/" aria-current="page">Support</a>
+    </nav>
+  </header>
+
+  <main>
+    <p class="eyebrow">Signal Station</p>
+    <h1>Support</h1>
+    <p class="lede">Something not working, or a question about a case file? Write to us and a person will answer.</p>
+
+    <div class="contact">
+      <p>Email us at</p>
+      <div class="mail">
+        <code id="addr">cgtsoftware.support@gmail.com</code>
+        <button class="btn" type="button" id="copy">Copy address</button>
+      </div>
+      <a class="open" href="mailto:cgtsoftware.support@gmail.com?subject=Signal%20Station%20-%20Support">Open in your email app</a>
+      <p class="small">We usually reply within a few days. In the app you can also open Settings and use the Support section.</p>
+    </div>
+
+    <h2>Common questions</h2>
+
+    <div class="qa">
+      <h3>How do I restore my purchases?</h3>
+      <p>Open Settings and use the restore option in the Purchases section. Use the same Apple ID you bought with. If it does not work, email us and tell us which Apple ID you used (not your password).</p>
+    </div>
+
+    <div class="qa">
+      <h3>Where is my progress saved?</h3>
+      <p>On your device only. Signal Station has no accounts and does not upload your progress. Restoring from a device backup or moving to a new iPhone with Apple's transfer tools usually brings it along. Deleting the app removes it.</p>
+    </div>
+
+    <div class="qa">
+      <h3>How do I reset my progress?</h3>
+      <p>Open Settings, go to the Progress section and choose reset. You confirm with a second tap. This cannot be undone.</p>
+    </div>
+
+    <div class="qa">
+      <h3>I want a refund.</h3>
+      <p>Refunds for App Store purchases are handled by Apple. You can request one at <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>.</p>
+    </div>
+
+    <div class="qa">
+      <h3>I found a mistake in a case file.</h3>
+      <p>Tell us which file and which card or page, and what looks wrong. The case files are works of fiction inspired by real accidents, and they are not official accident reports. We fix factual slips and unclear evidence in updates.</p>
+    </div>
+
+    <div class="qa">
+      <h3>What data does the app collect?</h3>
+      <p>No account, no ads, no analytics. Read the full <a href="/signalstation/privacy/">Privacy Policy</a>.</p>
+    </div>
+  </main>
+
+  <footer>
+    <span>&copy; 2026 CGT Software</span>
+    <nav aria-label="Footer">
+      <a href="/">Home</a>
+      <a href="/signalstation/privacy/">Privacy</a>
+      <a href="/signalstation/support/">Support</a>
+    </nav>
+  </footer>
+</div>
+<script>
+(function(){
+  var btn=document.getElementById("copy"),addr=document.getElementById("addr");
+  function done(){btn.textContent="Copied";setTimeout(function(){btn.textContent="Copy address";},1600);}
+  function pick(){var r=document.createRange();r.selectNodeContents(addr);var s=window.getSelection();s.removeAllRanges();s.addRange(r);}
+  btn.onclick=function(){
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(addr.textContent).then(done,pick);}else{pick();}
+  };
+})();
+</script>
+</body>
+</html>
