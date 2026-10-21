@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#2f2230" />
+  <meta name="description" content="Instructions for deleting a Senua account and associated personal data." />
+  <title>Delete Your Senua Account</title>
+
+  <style>
+    :root {
+      --bg: #f7f2ec;
+      --surface: #fffdf9;
+      --text: #2e2830;
+      --muted: #706873;
+      --border: rgba(61,43,62,.14);
+      --accent: #4a3049;
+      --accent-soft: #eee3eb;
+      --danger: #8d3f4d;
+      --danger-soft: #f6e8eb;
+      --shadow: 0 18px 50px rgba(53,35,52,.08);
+      --radius: 22px;
+      --max: 860px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #171318;
+        --surface: #221c23;
+        --text: #f3edf2;
+        --muted: #beb3bd;
+        --border: rgba(255,255,255,.11);
+        --accent: #d5b9cf;
+        --accent-soft: #342934;
+        --danger: #e3a5b0;
+        --danger-soft: #3a242a;
+        --shadow: 0 18px 50px rgba(0,0,0,.25);
+      }
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(181,142,168,.13), transparent 28rem),
+        radial-gradient(circle at 90% 10%, rgba(126,150,119,.10), transparent 25rem),
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.72;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--accent);
+      text-underline-offset: 3px;
+    }
+
+    .page {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+      padding: 44px 0 72px;
+    }
+
+    .hero, main {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .hero {
+      padding: 34px;
+      border-radius: 28px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 22px;
+      color: var(--accent);
+      font-size: .82rem;
+      font-weight: 750;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .mark {
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      background: var(--accent-soft);
+      font-size: .95rem;
+      letter-spacing: 0;
+    }
+
+    h1, h2, h3 {
+      line-height: 1.25;
+      letter-spacing: -.025em;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.15rem, 6vw, 3.7rem);
+    }
+
+    .lead {
+      max-width: 700px;
+      margin: 17px 0 0;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      margin-top: 24px;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    main {
+      margin-top: 22px;
+      padding: 10px 34px 38px;
+      border-radius: var(--radius);
+    }
+
+    section {
+      padding-top: 32px;
+    }
+
+    section + section {
+      margin-top: 8px;
+      border-top: 1px solid var(--border);
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font-size: 1.42rem;
+    }
+
+    h3 {
+      margin: 22px 0 8px;
+      font-size: 1.04rem;
+    }
+
+    p { margin: 0 0 14px; }
+
+    ul, ol {
+      margin: 8px 0 18px;
+      padding-left: 1.35rem;
+    }
+
+    li { margin: 8px 0; }
+
+    .method {
+      margin: 16px 0;
+      padding: 20px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: var(--accent-soft);
+    }
+
+    .warning {
+      margin: 18px 0 4px;
+      padding: 18px 20px;
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--danger);
+      border-radius: 14px;
+      background: var(--danger-soft);
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 6px;
+      padding: 12px 18px;
+      border-radius: 12px;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .contact {
+      margin-top: 16px;
+      padding: 20px;
+      border-radius: 16px;
+      background: var(--accent-soft);
+    }
+
+    footer {
+      padding: 26px 8px 0;
+      color: var(--muted);
+      text-align: center;
+      font-size: .84rem;
+    }
+
+    @media (max-width: 680px) {
+      .page {
+        width: min(calc(100% - 20px), var(--max));
+        padding-top: 16px;
+      }
+
+      .hero { padding: 26px 22px 24px; }
+      main { padding: 6px 22px 30px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header class="hero">
+      <div class="brand"><span class="mark">S</span>Senua</div>
+      <h1>Delete Your Account</h1>
+      <p class="lead">
+        This page explains how to request deletion of your Senua account and the
+        personal data associated with it.
+      </p>
+      <div class="meta">
+        <span><strong>Last updated:</strong> July 20, 2026</span>
+        <span><strong>Data controller:</strong> Coşkun Tıraş</span>
+      </div>
+    </header>
+
+    <main>
+      <section>
+        <h2>How to Delete Your Senua Account</h2>
+        <p>You can request account deletion using either of the following methods.</p>
+
+        <div class="method">
+          <h3>Method 1: Delete your account in the Senua app</h3>
+          <ol>
+            <li>Open Senua and sign in to your account.</li>
+            <li>Open your profile or account settings.</li>
+            <li>Select <strong>Delete Account</strong>.</li>
+            <li>Review the deletion notice and confirm your request.</li>
+          </ol>
+          <p>
+            You may be asked to confirm your identity before the request is completed.
+          </p>
+        </div>
+
+        <div class="method">
+          <h3>Method 2: Request deletion by email</h3>
+          <p>
+            Send an email from the address associated with your Senua account to:
+          </p>
+          <a class="button"
+             href="mailto:coskunntirass@gmail.com?subject=Senua%20Account%20Deletion%20Request">
+            Request Account Deletion
+          </a>
+          <p style="margin-top:14px;">
+            Use the subject line <strong>Senua Account Deletion Request</strong>.
+            Do not send passwords, payment-card details, or identity documents unless
+            we specifically request information needed to verify account ownership.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Data That Will Be Deleted</h2>
+        <p>After your request is verified and processed, deletion includes:</p>
+        <ul>
+          <li>Your Senua account and profile information;</li>
+          <li>Meal records, meal photographs, notes, and food-journal entries;</li>
+          <li>AI-generated meal analyses and estimated calorie ranges;</li>
+          <li>Hydration records;</li>
+          <li>Sleep and step information stored by Senua;</li>
+          <li>Feelings, observations, preferences, and application settings;</li>
+          <li>Weekly summaries, pattern stories, and related derived information;</li>
+          <li>Senua's internal subscription, entitlement, and usage records, except where retention is legally or technically required.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Deletion Timeframe and Limited Retention</h2>
+        <p>
+          We will process a valid deletion request as soon as reasonably possible.
+          Personal data will be removed from active Senua systems following completion
+          of the request.
+        </p>
+        <p>
+          Limited technical, security, fraud-prevention, backup, or legally required
+          records may remain for up to <strong>30 days</strong>. A longer period will
+          apply only where required by law or necessary to establish, exercise, or defend
+          legal claims.
+        </p>
+        <p>
+          Data retained temporarily during this period will not be used to provide normal
+          Senua features or for advertising.
+        </p>
+      </section>
+
+      <section>
+        <h2>Subscriptions Are Not Cancelled Automatically</h2>
+        <div class="warning">
+          Deleting your Senua account or uninstalling the application does not automatically
+          cancel an active subscription purchased through Apple App Store or Google Play.
+        </div>
+        <p>
+          To prevent future charges, cancel your subscription through the subscription
+          settings of the store account used to make the purchase.
+        </p>
+      </section>
+
+      <section>
+        <h2>Apple Health and Health Connect</h2>
+        <p>
+          Deleting your Senua account removes health and wellness values stored in Senua,
+          subject to the limited retention period described above.
+        </p>
+        <p>
+          Account deletion does not delete original information held by Apple Health or
+          Health Connect. You can manage those permissions and source records separately
+          through your device settings and the relevant health-data service.
+        </p>
+      </section>
+
+      <section>
+        <h2>What Happens After Deletion</h2>
+        <ul>
+          <li>You will lose access to your Senua records and weekly stories.</li>
+          <li>Deleted information cannot normally be restored.</li>
+          <li>You may create a new account later, but previous deleted data will not automatically return.</li>
+          <li>An active marketplace subscription may continue until you cancel it separately.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Contact</h2>
+        <p>
+          For account deletion, privacy questions, or problems accessing the in-app
+          deletion option, contact:
+        </p>
+
+        <div class="contact">
+          <strong>Coşkun Tıraş</strong><br />
+          Data Controller — Senua<br />
+          Türkiye<br />
+          <a href="mailto:coskunntirass@gmail.com">coskunntirass@gmail.com</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>© 2026 Senua. All rights reserved.</footer>
+  </div>
+</body>
+</html>

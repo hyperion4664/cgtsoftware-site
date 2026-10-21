@@ -1,0 +1,546 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#2f2230" />
+  <meta name="description" content="AI Data Use and Transparency information for the Senua mobile application." />
+  <title>Senua AI Data Use and Transparency</title>
+
+  <style>
+    :root {
+      --bg: #f7f2ec;
+      --surface: #fffdf9;
+      --text: #2e2830;
+      --muted: #706873;
+      --border: rgba(61,43,62,.14);
+      --accent: #4a3049;
+      --accent-soft: #eee3eb;
+      --sage: #73806d;
+      --warning: #9a6840;
+      --warning-soft: #f6eee6;
+      --shadow: 0 18px 50px rgba(53,35,52,.08);
+      --radius: 22px;
+      --max: 860px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #171318;
+        --surface: #221c23;
+        --text: #f3edf2;
+        --muted: #beb3bd;
+        --border: rgba(255,255,255,.11);
+        --accent: #d5b9cf;
+        --accent-soft: #342934;
+        --sage: #aab6a4;
+        --warning: #d7ac83;
+        --warning-soft: #362a21;
+        --shadow: 0 18px 50px rgba(0,0,0,.25);
+      }
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(181,142,168,.13), transparent 28rem),
+        radial-gradient(circle at 90% 10%, rgba(126,150,119,.10), transparent 25rem),
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.72;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a {
+      color: var(--accent);
+      text-underline-offset: 3px;
+    }
+
+    .page {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+      padding: 44px 0 72px;
+    }
+
+    .hero, .toc, main {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .hero {
+      padding: 34px;
+      border-radius: 28px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 22px;
+      color: var(--accent);
+      font-size: .82rem;
+      font-weight: 750;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .mark {
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      background: var(--accent-soft);
+      font-size: .95rem;
+      letter-spacing: 0;
+    }
+
+    h1, h2, h3 {
+      line-height: 1.25;
+      letter-spacing: -.025em;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.15rem, 6vw, 3.7rem);
+    }
+
+    .lead {
+      max-width: 710px;
+      margin: 17px 0 0;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      margin-top: 24px;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .toc {
+      margin: 22px 0;
+      padding: 24px 28px;
+      border-radius: var(--radius);
+    }
+
+    .toc h2 {
+      margin: 0 0 13px;
+      font-size: 1rem;
+      letter-spacing: 0;
+    }
+
+    .toc-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px 24px;
+    }
+
+    .toc a {
+      color: var(--muted);
+      font-size: .92rem;
+      text-decoration: none;
+    }
+
+    main {
+      padding: 12px 34px 38px;
+      border-radius: var(--radius);
+    }
+
+    section {
+      padding-top: 34px;
+      scroll-margin-top: 20px;
+    }
+
+    section + section {
+      margin-top: 8px;
+      border-top: 1px solid var(--border);
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font-size: 1.42rem;
+    }
+
+    h3 {
+      margin: 24px 0 8px;
+      font-size: 1.04rem;
+    }
+
+    p { margin: 0 0 14px; }
+
+    ul {
+      margin: 8px 0 18px;
+      padding-left: 1.25rem;
+    }
+
+    li { margin: 7px 0; }
+
+    .notice {
+      margin: 18px 0 4px;
+      padding: 18px 20px;
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--sage);
+      border-radius: 14px;
+      background: var(--accent-soft);
+    }
+
+    .warning {
+      margin: 18px 0 4px;
+      padding: 18px 20px;
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--warning);
+      border-radius: 14px;
+      background: var(--warning-soft);
+    }
+
+    .data-card {
+      margin: 14px 0;
+      padding: 18px 20px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: var(--accent-soft);
+    }
+
+    .data-card strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .contact {
+      margin-top: 16px;
+      padding: 20px;
+      border-radius: 16px;
+      background: var(--accent-soft);
+    }
+
+    footer {
+      padding: 26px 8px 0;
+      color: var(--muted);
+      text-align: center;
+      font-size: .84rem;
+    }
+
+    @media (max-width: 680px) {
+      .page {
+        width: min(calc(100% - 20px), var(--max));
+        padding-top: 16px;
+      }
+
+      .hero { padding: 26px 22px 24px; }
+      .toc { padding: 21px 22px; }
+      .toc-grid { grid-template-columns: 1fr; gap: 7px; }
+      main { padding: 6px 22px 30px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header class="hero">
+      <div class="brand"><span class="mark">S</span>Senua</div>
+      <h1>AI Data Use and Transparency</h1>
+      <p class="lead">
+        This page explains how Senua uses artificial intelligence, what information may be
+        processed, what is not intentionally shared with AI providers, and the limits of
+        AI-generated results.
+      </p>
+      <div class="meta">
+        <span><strong>Effective:</strong> July 20, 2026</span>
+        <span><strong>Last updated:</strong> July 20, 2026</span>
+        <span><strong>Operator:</strong> Coşkun Tıraş</span>
+      </div>
+    </header>
+
+    <nav class="toc" aria-label="Table of contents">
+      <h2>Contents</h2>
+      <div class="toc-grid">
+        <a href="#overview">1. Overview</a>
+        <a href="#features">2. AI Features</a>
+        <a href="#meal-analysis">3. Meal Photo Analysis</a>
+        <a href="#weekly-stories">4. Weekly Pattern Stories</a>
+        <a href="#data-sent">5. Data That May Be Sent</a>
+        <a href="#data-not-sent">6. Data Not Intentionally Sent</a>
+        <a href="#providers">7. AI Service Providers</a>
+        <a href="#training">8. Model Training and Retention</a>
+        <a href="#control">9. Your Choices and Control</a>
+        <a href="#accuracy">10. Accuracy and Limitations</a>
+        <a href="#health">11. Health and Medical Limitations</a>
+        <a href="#deletion">12. Deletion and Retention</a>
+        <a href="#changes">13. Changes</a>
+        <a href="#contact">14. Contact</a>
+      </div>
+    </nav>
+
+    <main>
+      <section id="overview">
+        <h2>1. Overview</h2>
+        <p>
+          Senua uses artificial intelligence to support selected food-journaling and
+          weekly-insight features. AI processing is used to make user-submitted information
+          easier to understand and organize.
+        </p>
+        <p>
+          AI is not used to make medical decisions, diagnose health conditions, provide
+          treatment, determine insurance or employment eligibility, or create advertising
+          profiles.
+        </p>
+      </section>
+
+      <section id="features">
+        <h2>2. AI Features in Senua</h2>
+        <p>Senua may use AI for the following functions:</p>
+        <ul>
+          <li>Analyzing a meal photograph submitted by the user;</li>
+          <li>Producing structured meal information and approximate food estimates;</li>
+          <li>Turning pre-computed weekly statistics into a short, readable pattern story;</li>
+          <li>Rewriting approved experiment titles or descriptions for clarity without changing their meaning.</li>
+        </ul>
+        <p>
+          Some Senua features work without AI, including manual meal entry and other
+          manually recorded wellness information.
+        </p>
+      </section>
+
+      <section id="meal-analysis">
+        <h2>3. Meal Photo Analysis</h2>
+        <p>
+          When you choose to analyze a meal photograph, Senua may send the image and limited
+          meal context to an AI service provider.
+        </p>
+        <p>The AI response may include:</p>
+        <ul>
+          <li>An estimated meal name;</li>
+          <li>An estimated meal type;</li>
+          <li>An estimated portion description;</li>
+          <li>An approximate calorie range;</li>
+          <li>A confidence value;</li>
+          <li>Structured food-related information used by Senua.</li>
+        </ul>
+        <div class="warning">
+          Meal names, ingredients, portions, and calorie ranges generated from photographs
+          are estimates and may be inaccurate.
+        </div>
+      </section>
+
+      <section id="weekly-stories">
+        <h2>4. Weekly Pattern Stories</h2>
+        <p>
+          Senua's backend may calculate and validate weekly statistics from your records
+          before AI processing begins.
+        </p>
+        <p>
+          The AI receives only the prepared statistics and instructions required to turn
+          them into readable text. It is instructed not to invent, infer, round, combine,
+          modify, or independently calculate numbers, dates, durations, thresholds, sample
+          sizes, or differences.
+        </p>
+        <p>
+          Pattern claims are intended to use only eligible, pre-validated comparisons.
+          Summary values alone are not intended to be used to claim that two behaviors are
+          related.
+        </p>
+        <p>
+          Step and movement information may appear only as passive background where Senua
+          has already validated an eligible association. Movement is not presented as a
+          fitness score, competition, step target, or exercise program.
+        </p>
+      </section>
+
+      <section id="data-sent">
+        <h2>5. Information That May Be Sent for AI Processing</h2>
+
+        <div class="data-card">
+          <strong>For meal-photo analysis</strong>
+          The meal photograph you choose to submit, together with limited meal context
+          required for the requested analysis.
+        </div>
+
+        <div class="data-card">
+          <strong>For weekly pattern stories</strong>
+          Pre-computed and validated statistics, eligible comparison objects, approved
+          experiment information, and instructions required to produce the story.
+        </div>
+
+        <div class="data-card">
+          <strong>Technical processing information</strong>
+          Limited request metadata necessary to transmit, secure, monitor, and troubleshoot
+          the AI request.
+        </div>
+
+        <p>
+          Senua seeks to limit AI requests to the information reasonably necessary for the
+          requested feature.
+        </p>
+      </section>
+
+      <section id="data-not-sent">
+        <h2>6. Information Not Intentionally Sent to AI Providers</h2>
+        <p>Senua is designed not to intentionally include the following in normal AI requests:</p>
+        <ul>
+          <li>Your name or surname;</li>
+          <li>Your email address;</li>
+          <li>Your password or authentication credentials;</li>
+          <li>Your full Clerk account identifier;</li>
+          <li>Your payment-card or bank-account details;</li>
+          <li>Your complete subscription or billing history;</li>
+          <li>Your contacts, microphone recordings, or precise location;</li>
+          <li>Health information unrelated to the requested AI feature.</li>
+        </ul>
+        <p>
+          You should avoid placing unnecessary personal, confidential, or third-party
+          sensitive information inside meal photographs or free-text notes.
+        </p>
+      </section>
+
+      <section id="providers">
+        <h2>7. AI Service Providers</h2>
+        <p>
+          Senua may use OpenAI's API services to process meal images and validated weekly
+          statistics.
+        </p>
+        <p>
+          Information submitted to an AI provider is also subject to that provider's
+          applicable privacy, security, and data-processing terms.
+        </p>
+        <p>
+          Senua may change or add AI service providers where reasonably necessary to
+          maintain, secure, or improve the service. Material changes will be reflected in
+          this page or the Privacy Policy.
+        </p>
+      </section>
+
+      <section id="training">
+        <h2>8. Model Training and Provider Retention</h2>
+        <p>
+          Senua does not intend to use your meal photographs, journal data, or weekly
+          statistics to train Senua's own public AI model.
+        </p>
+        <p>
+          Senua uses API-based AI services rather than a consumer chatbot account. Under
+          the provider settings and terms applicable to the service, API inputs and outputs
+          are not intended to be used for model training unless the API customer expressly
+          enables such use.
+        </p>
+        <p>
+          AI providers may temporarily retain limited request data for security, abuse
+          prevention, legal compliance, or technical operations in accordance with their
+          applicable policies and service configuration.
+        </p>
+        <div class="notice">
+          Senua will not knowingly opt in to voluntary model-training data sharing for
+          user meal photographs or weekly wellness data without updating this notice and
+          obtaining any consent required by law.
+        </div>
+      </section>
+
+      <section id="control">
+        <h2>9. Your Choices and Control</h2>
+        <ul>
+          <li>Meal-photo AI analysis is initiated only when you choose the relevant feature.</li>
+          <li>You may enter meal information manually instead of using photo analysis.</li>
+          <li>You are not required to accept an AI-generated result as correct.</li>
+          <li>You may review, edit, replace, or delete supported journal entries and results.</li>
+          <li>You may stop using AI features while continuing to use supported non-AI features.</li>
+          <li>You may request deletion of your Senua account and associated data.</li>
+        </ul>
+      </section>
+
+      <section id="accuracy">
+        <h2>10. Accuracy and Limitations</h2>
+        <p>
+          AI systems are probabilistic. Their outputs may be inaccurate, incomplete,
+          inconsistent, delayed, or unavailable.
+        </p>
+        <p>
+          Senua does not guarantee the accuracy of AI-generated meal names, ingredients,
+          portion descriptions, calorie ranges, confidence values, weekly narratives, or
+          suggested wording.
+        </p>
+        <p>
+          Users should review AI-generated content and correct records where appropriate.
+          Senua should not be used where an exact nutritional, clinical, legal, or safety
+          determination is required.
+        </p>
+      </section>
+
+      <section id="health">
+        <h2>11. Health and Medical Limitations</h2>
+        <p>
+          Senua is a general wellness and self-observation application. AI-generated content
+          is not medical, nutritional, psychological, or treatment advice.
+        </p>
+        <ul>
+          <li>Senua does not diagnose dehydration or any health condition;</li>
+          <li>Senua does not diagnose sleep, eating, metabolic, or nutritional disorders;</li>
+          <li>A weekly association does not prove that one behavior caused another;</li>
+          <li>Hydration patterns do not imply that drinking more water would improve sleep, mood, appetite, or health;</li>
+          <li>Movement patterns do not constitute an exercise prescription or fitness recommendation.</li>
+        </ul>
+        <div class="warning">
+          Do not use Senua's AI output for emergency, diagnosis, treatment, medication,
+          or other clinical decisions. Seek advice from a qualified professional when needed.
+        </div>
+      </section>
+
+      <section id="deletion">
+        <h2>12. Deletion and Retention</h2>
+        <p>
+          When you delete a supported meal entry, Senua is designed to remove the related
+          application-stored meal data and associated AI result from active systems, subject
+          to temporary backup and technical-processing cycles.
+        </p>
+        <p>
+          When your account is deleted, Senua will delete associated meal photographs,
+          AI results, weekly stories, and related stored data as described in the Privacy
+          Policy and Delete Account page.
+        </p>
+        <p>
+          Limited technical, security, fraud-prevention, backup, or legally required records
+          may remain for up to <strong>30 days</strong>. Third-party providers may apply
+          their own limited retention periods for security or legal purposes.
+        </p>
+      </section>
+
+      <section id="changes">
+        <h2>13. Changes to This Notice</h2>
+        <p>
+          We may update this page when Senua's AI features, providers, processing methods,
+          or legal obligations change. The revised page will display a new “Last updated”
+          date.
+        </p>
+        <p>
+          Where required by law, we will provide additional notice or request consent before
+          making a material change to how personal or health-related data is used.
+        </p>
+      </section>
+
+      <section id="contact">
+        <h2>14. Contact</h2>
+        <p>
+          For questions about Senua's AI processing or use of your information, contact:
+        </p>
+
+        <div class="contact">
+          <strong>Coşkun Tıraş</strong><br />
+          Data Controller — Senua<br />
+          Türkiye<br />
+          <a href="mailto:coskunntirass@gmail.com">coskunntirass@gmail.com</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>© 2026 Senua. All rights reserved.</footer>
+  </div>
+</body>
+</html>

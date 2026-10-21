@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#2f2230" />
+  <meta name="description" content="Terms of Sale for Senua subscriptions and digital services." />
+  <title>Senua Terms of Sale</title>
+  <style>
+    :root {
+      --bg: #f7f2ec;
+      --surface: #fffdf9;
+      --text: #2e2830;
+      --muted: #706873;
+      --border: rgba(61,43,62,.14);
+      --accent: #4a3049;
+      --accent-soft: #eee3eb;
+      --shadow: 0 18px 50px rgba(53,35,52,.08);
+      --radius: 22px;
+      --max: 860px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #171318;
+        --surface: #221c23;
+        --text: #f3edf2;
+        --muted: #beb3bd;
+        --border: rgba(255,255,255,.11);
+        --accent: #d5b9cf;
+        --accent-soft: #342934;
+        --shadow: 0 18px 50px rgba(0,0,0,.25);
+      }
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(181,142,168,.13), transparent 28rem),
+        radial-gradient(circle at 90% 10%, rgba(126,150,119,.10), transparent 25rem),
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.72;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--accent); text-underline-offset: 3px; }
+    .page { width: min(calc(100% - 32px), var(--max)); margin: 0 auto; padding: 44px 0 72px; }
+    .hero, .toc, main {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+    .hero { padding: 34px; border-radius: 28px; }
+    .brand {
+      display: inline-flex; align-items: center; gap: 10px; margin-bottom: 22px;
+      color: var(--accent); font-size: .82rem; font-weight: 750;
+      letter-spacing: .14em; text-transform: uppercase;
+    }
+    .mark {
+      width: 30px; height: 30px; display: grid; place-items: center;
+      border-radius: 10px; background: var(--accent-soft);
+      font-size: .95rem; letter-spacing: 0;
+    }
+    h1, h2, h3 { line-height: 1.25; letter-spacing: -.025em; }
+    h1 { margin: 0; font-size: clamp(2.15rem, 6vw, 3.7rem); }
+    .lead { max-width: 690px; margin: 17px 0 0; color: var(--muted); font-size: 1.05rem; }
+    .meta { display: flex; flex-wrap: wrap; gap: 10px 18px; margin-top: 24px; color: var(--muted); font-size: .9rem; }
+    .toc { margin: 22px 0; padding: 24px 28px; border-radius: var(--radius); }
+    .toc h2 { margin: 0 0 13px; font-size: 1rem; letter-spacing: 0; }
+    .toc-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 8px 24px; }
+    .toc a { color: var(--muted); font-size: .92rem; text-decoration: none; }
+    main { padding: 12px 34px 38px; border-radius: var(--radius); }
+    section { padding-top: 34px; scroll-margin-top: 20px; }
+    section + section { margin-top: 8px; border-top: 1px solid var(--border); }
+    h2 { margin: 0 0 14px; font-size: 1.42rem; }
+    h3 { margin: 24px 0 8px; font-size: 1.02rem; }
+    p { margin: 0 0 14px; }
+    ul { margin: 8px 0 18px; padding-left: 1.25rem; }
+    li { margin: 7px 0; }
+    .notice {
+      margin: 18px 0 4px; padding: 18px 20px;
+      border: 1px solid var(--border); border-left: 4px solid var(--accent);
+      border-radius: 14px; background: var(--accent-soft);
+    }
+    .contact { margin-top: 16px; padding: 20px; border-radius: 16px; background: var(--accent-soft); }
+    footer { padding: 26px 8px 0; color: var(--muted); text-align: center; font-size: .84rem; }
+    @media (max-width: 680px) {
+      .page { width: min(calc(100% - 20px), var(--max)); padding-top: 16px; }
+      .hero { padding: 26px 22px 24px; }
+      .toc { padding: 21px 22px; }
+      .toc-grid { grid-template-columns: 1fr; gap: 7px; }
+      main { padding: 6px 22px 30px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <div class="brand"><span class="mark">S</span>Senua</div>
+      <h1>Terms of Sale</h1>
+      <p class="lead">
+        These Terms of Sale govern subscriptions, digital access, purchases,
+        renewals, cancellations, refunds, and usage allowances offered through Senua.
+      </p>
+      <div class="meta">
+        <span><strong>Effective:</strong> July 20, 2026</span>
+        <span><strong>Last updated:</strong> July 20, 2026</span>
+        <span><strong>Seller:</strong> Coşkun Tıraş</span>
+      </div>
+    </header>
+
+    <nav class="toc" aria-label="Table of contents">
+      <h2>Contents</h2>
+      <div class="toc-grid">
+        <a href="#seller">1. Seller Information</a>
+        <a href="#scope">2. Scope</a>
+        <a href="#products">3. Subscriptions and Digital Access</a>
+        <a href="#prices">4. Prices and Taxes</a>
+        <a href="#billing">5. Billing and Automatic Renewal</a>
+        <a href="#trial">6. Free Access Period</a>
+        <a href="#allowances">7. AI Usage Allowances</a>
+        <a href="#cancel">8. Cancellation</a>
+        <a href="#refunds">9. Refunds</a>
+        <a href="#changes">10. Plan and Price Changes</a>
+        <a href="#availability">11. Availability</a>
+        <a href="#account">12. Account Deletion</a>
+        <a href="#consumer">13. Consumer Rights</a>
+        <a href="#liability">14. Limitation of Liability</a>
+        <a href="#law">15. Governing Law</a>
+        <a href="#contact">16. Contact</a>
+      </div>
+    </nav>
+
+    <main>
+      <section id="seller">
+        <h2>1. Seller Information</h2>
+        <p>Senua is operated by:</p>
+        <div class="contact">
+          <strong>Coşkun Tıraş</strong><br />
+          Türkiye<br />
+          Email: <a href="mailto:coskunntirass@gmail.com">coskunntirass@gmail.com</a>
+        </div>
+      </section>
+
+      <section id="scope">
+        <h2>2. Scope</h2>
+        <p>
+          These Terms of Sale apply to paid subscriptions and other digital services
+          purchased for use with the Senua mobile application.
+        </p>
+        <p>
+          They supplement Senua's Terms of Use and Privacy Policy. In the event of a
+          conflict concerning payment processing, the applicable Apple App Store or
+          Google Play terms may also apply.
+        </p>
+      </section>
+
+      <section id="products">
+        <h2>3. Subscriptions and Digital Access</h2>
+        <p>Senua may offer weekly, monthly, and annual auto-renewing subscriptions.</p>
+        <p>
+          A paid subscription may provide access to premium features, AI-assisted meal
+          analysis, weekly pattern stories, higher usage allowances, and other features
+          displayed on the purchase screen.
+        </p>
+        <p>
+          The features, limits, billing period, and current price shown in the application
+          or marketplace immediately before purchase form part of your purchase.
+        </p>
+      </section>
+
+      <section id="prices">
+        <h2>4. Prices and Taxes</h2>
+        <p>
+          Prices are displayed in the currency and format determined by Apple App Store
+          or Google Play. The displayed price may include applicable taxes depending on
+          your country, marketplace account, and local law.
+        </p>
+        <p>
+          Exchange rates, taxes, marketplace pricing tiers, and regional pricing may cause
+          prices to differ between countries and platforms.
+        </p>
+      </section>
+
+      <section id="billing">
+        <h2>5. Billing and Automatic Renewal</h2>
+        <p>
+          Payments are processed by Apple App Store or Google Play using the payment method
+          connected to your marketplace account. Senua does not receive or store your full
+          payment-card or bank-account information.
+        </p>
+        <p>
+          Unless cancelled before the applicable renewal deadline, a subscription renews
+          automatically for another period of the same duration, and the marketplace may
+          charge the then-current subscription price.
+        </p>
+        <p>
+          Renewal timing, payment authorization, failed-payment handling, grace periods,
+          and marketplace billing rules are controlled by Apple or Google.
+        </p>
+      </section>
+
+      <section id="trial">
+        <h2>6. Free Access Period</h2>
+        <p>
+          Senua may provide a seven-day introductory access period with a limited number
+          of AI meal-photo analyses. Unless the purchase screen expressly states otherwise,
+          this introductory access is managed by Senua and is not an Apple App Store or
+          Google Play free-trial subscription.
+        </p>
+        <p>
+          The free access period does not automatically create a paid subscription.
+          A paid subscription begins only when you actively confirm a purchase through
+          the applicable marketplace.
+        </p>
+      </section>
+
+      <section id="allowances">
+        <h2>7. AI Usage Allowances</h2>
+        <p>
+          Subscription plans may include a limited number of AI analyses for a specified
+          usage period. The current allowance and reset period are shown in the application.
+        </p>
+        <ul>
+          <li>Usage allowances are personal, non-transferable, and have no cash value.</li>
+          <li>Unused allowances do not carry forward unless Senua expressly states otherwise.</li>
+          <li>A failed or technically incomplete AI request may be restored to your allowance where the system can verify the failure.</li>
+          <li>Manual meal entries may remain available independently of AI-photo allowances.</li>
+          <li>Attempts to bypass, automate, resell, or misuse usage limits may result in access restrictions.</li>
+        </ul>
+      </section>
+
+      <section id="cancel">
+        <h2>8. Cancellation</h2>
+        <p>
+          You may cancel a subscription through the subscription settings of the marketplace
+          account used for the purchase.
+        </p>
+        <p>
+          Cancellation normally prevents the next renewal. Unless the marketplace or
+          applicable law provides otherwise, premium access continues until the end of the
+          already-paid billing period.
+        </p>
+        <div class="notice">
+          Deleting the Senua application or deleting your Senua account does not automatically
+          cancel an Apple App Store or Google Play subscription.
+        </div>
+      </section>
+
+      <section id="refunds">
+        <h2>9. Refunds</h2>
+        <p>
+          Refund eligibility and processing are generally determined by the marketplace
+          through which the purchase was made and by applicable consumer law.
+        </p>
+        <ul>
+          <li>For Apple App Store purchases, refund requests must normally be submitted to Apple.</li>
+          <li>For Google Play purchases, refund requests may be submitted through Google Play or, where applicable, directed to the developer.</li>
+          <li>Cancelling a subscription does not itself create an automatic refund for an already-paid period.</li>
+          <li>No term in this document limits a refund, withdrawal, or remedy that cannot legally be excluded.</li>
+        </ul>
+        <p>
+          For purchase-support questions, contact
+          <a href="mailto:coskunntirass@gmail.com">coskunntirass@gmail.com</a>
+          and include the platform used, purchase date, and non-sensitive transaction reference.
+          Do not send card details or account passwords.
+        </p>
+      </section>
+
+      <section id="changes">
+        <h2>10. Plan, Feature, and Price Changes</h2>
+        <p>
+          Senua may change future subscription prices, plan names, included features, or
+          usage allowances. Any change affecting an existing subscription will be handled
+          in accordance with marketplace requirements and applicable law.
+        </p>
+        <p>
+          Where required, Apple or Google may request your approval before a price increase
+          takes effect. Otherwise, a revised price may apply from a future renewal date after
+          the notice required by the marketplace or law.
+        </p>
+      </section>
+
+      <section id="availability">
+        <h2>11. Availability and Service Changes</h2>
+        <p>
+          We seek to keep paid features available, but uninterrupted or error-free operation
+          cannot be guaranteed. Features may be temporarily unavailable because of maintenance,
+          network failures, marketplace outages, third-party provider issues, security events,
+          or circumstances beyond our reasonable control.
+        </p>
+        <p>
+          If a paid service is materially unavailable for an extended period, any remedy will
+          be determined in accordance with applicable law and marketplace rules.
+        </p>
+      </section>
+
+      <section id="account">
+        <h2>12. Account Deletion and Purchases</h2>
+        <p>
+          Account deletion removes or schedules removal of Senua account data as described in
+          the Privacy Policy. It does not transfer, pause, cancel, or refund a marketplace
+          subscription.
+        </p>
+        <p>
+          Cancel the subscription through Apple App Store or Google Play before deleting your
+          account when you do not want future renewal charges.
+        </p>
+      </section>
+
+      <section id="consumer">
+        <h2>13. Consumer Rights</h2>
+        <p>
+          These Terms of Sale do not exclude or restrict mandatory consumer rights available
+          under the law of your country.
+        </p>
+        <p>
+          Statutory rights concerning digital services, defective performance, refunds,
+          withdrawal, cancellation, or legal remedies continue to apply where they cannot
+          lawfully be waived.
+        </p>
+      </section>
+
+      <section id="liability">
+        <h2>14. Limitation of Liability</h2>
+        <p>
+          To the maximum extent permitted by law, Senua is not liable for indirect, incidental,
+          special, or consequential losses arising from marketplace failures, unsupported
+          devices, inaccurate AI output, loss of connectivity, or use of the service contrary
+          to its intended wellness purpose.
+        </p>
+        <p>
+          Nothing in these Terms excludes liability that cannot legally be excluded, including
+          liability for fraud, wilful misconduct, or mandatory consumer protections.
+        </p>
+      </section>
+
+      <section id="law">
+        <h2>15. Governing Law and Disputes</h2>
+        <p>
+          These Terms are governed by the laws of Türkiye, without depriving you of mandatory
+          consumer protections that apply in your country of residence.
+        </p>
+        <p>
+          Before starting formal proceedings, you are encouraged to contact us so that we can
+          attempt to resolve the issue. Rights to apply to a competent consumer authority,
+          consumer arbitration committee, court, or other legally available body remain unaffected.
+        </p>
+      </section>
+
+      <section id="contact">
+        <h2>16. Contact</h2>
+        <div class="contact">
+          <strong>Coşkun Tıraş</strong><br />
+          Senua<br />
+          Türkiye<br />
+          <a href="mailto:coskunntirass@gmail.com">coskunntirass@gmail.com</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>© 2026 Senua. All rights reserved.</footer>
+  </div>
+</body>
+</html>

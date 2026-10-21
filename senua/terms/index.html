@@ -1,0 +1,612 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#2f2230" />
+  <meta name="description" content="Terms of Use for the Senua mobile application." />
+  <title>Senua Terms of Use</title>
+
+  <style>
+    :root {
+      --bg: #f7f2ec;
+      --surface: #fffdf9;
+      --text: #2e2830;
+      --muted: #706873;
+      --border: rgba(61,43,62,.14);
+      --accent: #4a3049;
+      --accent-soft: #eee3eb;
+      --sage: #73806d;
+      --shadow: 0 18px 50px rgba(53,35,52,.08);
+      --radius: 22px;
+      --max: 860px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #171318;
+        --surface: #221c23;
+        --text: #f3edf2;
+        --muted: #beb3bd;
+        --border: rgba(255,255,255,.11);
+        --accent: #d5b9cf;
+        --accent-soft: #342934;
+        --sage: #aab6a4;
+        --shadow: 0 18px 50px rgba(0,0,0,.25);
+      }
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(181,142,168,.13), transparent 28rem),
+        radial-gradient(circle at 90% 10%, rgba(126,150,119,.10), transparent 25rem),
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.72;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a {
+      color: var(--accent);
+      text-underline-offset: 3px;
+    }
+
+    .page {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+      padding: 44px 0 72px;
+    }
+
+    .hero, .toc, main {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .hero {
+      padding: 34px;
+      border-radius: 28px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 22px;
+      color: var(--accent);
+      font-size: .82rem;
+      font-weight: 750;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .mark {
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      background: var(--accent-soft);
+      font-size: .95rem;
+      letter-spacing: 0;
+    }
+
+    h1, h2, h3 {
+      line-height: 1.25;
+      letter-spacing: -.025em;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.15rem, 6vw, 3.7rem);
+    }
+
+    .lead {
+      max-width: 700px;
+      margin: 17px 0 0;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      margin-top: 24px;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .toc {
+      margin: 22px 0;
+      padding: 24px 28px;
+      border-radius: var(--radius);
+    }
+
+    .toc h2 {
+      margin: 0 0 13px;
+      font-size: 1rem;
+      letter-spacing: 0;
+    }
+
+    .toc-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px 24px;
+    }
+
+    .toc a {
+      color: var(--muted);
+      font-size: .92rem;
+      text-decoration: none;
+    }
+
+    main {
+      padding: 12px 34px 38px;
+      border-radius: var(--radius);
+    }
+
+    section {
+      padding-top: 34px;
+      scroll-margin-top: 20px;
+    }
+
+    section + section {
+      margin-top: 8px;
+      border-top: 1px solid var(--border);
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font-size: 1.42rem;
+    }
+
+    h3 {
+      margin: 24px 0 8px;
+      font-size: 1.02rem;
+    }
+
+    p { margin: 0 0 14px; }
+
+    ul {
+      margin: 8px 0 18px;
+      padding-left: 1.25rem;
+    }
+
+    li { margin: 7px 0; }
+
+    .notice {
+      margin: 18px 0 4px;
+      padding: 18px 20px;
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--sage);
+      border-radius: 14px;
+      background: var(--accent-soft);
+    }
+
+    .contact {
+      margin-top: 16px;
+      padding: 20px;
+      border-radius: 16px;
+      background: var(--accent-soft);
+    }
+
+    footer {
+      padding: 26px 8px 0;
+      color: var(--muted);
+      text-align: center;
+      font-size: .84rem;
+    }
+
+    @media (max-width: 680px) {
+      .page {
+        width: min(calc(100% - 20px), var(--max));
+        padding-top: 16px;
+      }
+
+      .hero { padding: 26px 22px 24px; }
+      .toc { padding: 21px 22px; }
+      .toc-grid { grid-template-columns: 1fr; gap: 7px; }
+      main { padding: 6px 22px 30px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header class="hero">
+      <div class="brand"><span class="mark">S</span>Senua</div>
+      <h1>Terms of Use</h1>
+      <p class="lead">
+        These Terms of Use govern your access to and use of the Senua mobile application,
+        including its food-journaling, hydration, sleep, movement, AI-assisted, and weekly
+        pattern features.
+      </p>
+      <div class="meta">
+        <span><strong>Effective:</strong> July 20, 2026</span>
+        <span><strong>Last updated:</strong> July 20, 2026</span>
+        <span><strong>Operator:</strong> Coşkun Tıraş</span>
+      </div>
+    </header>
+
+    <nav class="toc" aria-label="Table of contents">
+      <h2>Contents</h2>
+      <div class="toc-grid">
+        <a href="#acceptance">1. Acceptance</a>
+        <a href="#eligibility">2. Eligibility</a>
+        <a href="#service">3. The Senua Service</a>
+        <a href="#account">4. Accounts and Security</a>
+        <a href="#license">5. Limited Licence</a>
+        <a href="#content">6. Your Content</a>
+        <a href="#ai">7. AI-Assisted Features</a>
+        <a href="#health">8. Health Data and Permissions</a>
+        <a href="#medical">9. Wellness and Medical Disclaimer</a>
+        <a href="#acceptable-use">10. Acceptable Use</a>
+        <a href="#subscriptions">11. Subscriptions</a>
+        <a href="#third-parties">12. Third-Party Services</a>
+        <a href="#ip">13. Intellectual Property</a>
+        <a href="#availability">14. Availability and Changes</a>
+        <a href="#termination">15. Suspension and Termination</a>
+        <a href="#disclaimers">16. Disclaimers</a>
+        <a href="#liability">17. Limitation of Liability</a>
+        <a href="#indemnity">18. Indemnity</a>
+        <a href="#law">19. Governing Law</a>
+        <a href="#changes">20. Changes to These Terms</a>
+        <a href="#contact">21. Contact</a>
+      </div>
+    </nav>
+
+    <main>
+      <section id="acceptance">
+        <h2>1. Acceptance of These Terms</h2>
+        <p>
+          Senua is operated by <strong>Coşkun Tıraş</strong> (“Senua,” “we,” “us,” or “our”).
+          By downloading, accessing, creating an account for, or using Senua, you agree to
+          these Terms of Use.
+        </p>
+        <p>
+          If you do not agree to these Terms, do not use Senua. Our Privacy Policy and,
+          where you make a purchase, our Terms of Sale also apply.
+        </p>
+      </section>
+
+      <section id="eligibility">
+        <h2>2. Eligibility</h2>
+        <p>
+          You must be at least <strong>18 years old</strong> and legally capable of entering
+          into a binding agreement to use Senua.
+        </p>
+        <p>
+          By using Senua, you represent that the information you provide is accurate and that
+          your use of the service is lawful in your country.
+        </p>
+      </section>
+
+      <section id="service">
+        <h2>3. The Senua Service</h2>
+        <p>
+          Senua is a general wellness and self-observation application. Depending on the
+          version, device, permissions, and subscription status, Senua may allow you to:
+        </p>
+        <ul>
+          <li>Record meals, meal photographs, portions, notes, and food-related observations;</li>
+          <li>Record hydration and sleep information;</li>
+          <li>Read authorized step-count and sleep information from Apple Health or Health Connect;</li>
+          <li>Receive AI-assisted meal descriptions and estimated calorie ranges;</li>
+          <li>View weekly summaries and non-causal pattern stories based on your records;</li>
+          <li>Use experiments or prompts intended to support self-observation;</li>
+          <li>Manage free and paid feature access.</li>
+        </ul>
+        <p>
+          Features may vary by platform, region, application version, subscription, device
+          capability, and third-party availability.
+        </p>
+      </section>
+
+      <section id="account">
+        <h2>4. Accounts and Security</h2>
+        <p>
+          Some features require an account. You are responsible for maintaining the security
+          of your device, sign-in method, and account access.
+        </p>
+        <ul>
+          <li>Provide accurate and current account information;</li>
+          <li>Do not share access in a way that allows unauthorized use;</li>
+          <li>Notify us promptly if you suspect unauthorized access;</li>
+          <li>Do not create accounts using another person's identity without authorization.</li>
+        </ul>
+        <p>
+          You are responsible for activity performed through your account unless applicable
+          law provides otherwise.
+        </p>
+      </section>
+
+      <section id="license">
+        <h2>5. Limited Licence</h2>
+        <p>
+          Subject to these Terms, we grant you a limited, personal, revocable,
+          non-exclusive, non-transferable, and non-sublicensable licence to install and use
+          Senua on supported devices for your own lawful, non-commercial use.
+        </p>
+        <p>
+          This licence does not transfer ownership of Senua, its software, designs, content,
+          trademarks, models, prompts, databases, or other intellectual property.
+        </p>
+      </section>
+
+      <section id="content">
+        <h2>6. Your Content</h2>
+        <p>
+          “Your Content” includes meal photographs, text, notes, entries, preferences, and
+          other material you submit to Senua.
+        </p>
+        <p>
+          You retain ownership of Your Content. You grant us a limited, worldwide,
+          non-exclusive licence to host, store, reproduce, transmit, process, and display
+          Your Content only as reasonably necessary to operate, secure, maintain, and provide
+          Senua and the features you request.
+        </p>
+        <p>You represent that:</p>
+        <ul>
+          <li>You own Your Content or have permission to submit it;</li>
+          <li>Your Content does not violate another person's privacy or intellectual-property rights;</li>
+          <li>Your Content is not unlawful, abusive, malicious, or intended to interfere with the service.</li>
+        </ul>
+        <p>
+          Do not upload photographs or information containing unnecessary personal,
+          confidential, or third-party sensitive information.
+        </p>
+      </section>
+
+      <section id="ai">
+        <h2>7. AI-Assisted Features</h2>
+        <p>
+          Senua may use artificial intelligence to analyze meal photographs, structure
+          food-related information, and generate weekly pattern stories from pre-computed
+          statistics.
+        </p>
+        <p>
+          AI outputs are probabilistic and may be inaccurate, incomplete, inconsistent,
+          unavailable, or unsuitable for your circumstances. Estimated food names,
+          ingredients, portions, calories, and associations are not guaranteed facts.
+        </p>
+        <ul>
+          <li>Review AI output before relying on or saving it;</li>
+          <li>Do not use AI output for medical diagnosis, treatment, or emergency decisions;</li>
+          <li>Do not treat a reported association as proof that one behavior caused another;</li>
+          <li>Use professional advice where accuracy is important.</li>
+        </ul>
+        <p>
+          We may apply usage limits, technical safeguards, moderation, or temporary
+          restrictions to AI-assisted features.
+        </p>
+      </section>
+
+      <section id="health">
+        <h2>8. Health Data and Device Permissions</h2>
+        <p>
+          With your permission, Senua may read step-count and sleep data from Apple Health
+          on iOS or Health Connect on Android. Access depends on the permissions you grant
+          through your device.
+        </p>
+        <p>
+          You may deny or revoke access in your device settings. Some Senua features may
+          become limited or unavailable after permission is revoked.
+        </p>
+        <p>
+          Senua uses movement as passive context. It is not intended to provide a fitness
+          score, exercise prescription, calorie-burn target, competition, or step-goal program.
+        </p>
+        <div class="notice">
+          You are responsible for reviewing the permissions you grant and for ensuring that
+          any manually entered health or wellness information is reasonably accurate.
+        </div>
+      </section>
+
+      <section id="medical">
+        <h2>9. Wellness and Medical Disclaimer</h2>
+        <p>
+          Senua is designed for general wellness, food journaling, and personal
+          self-observation. It is <strong>not a medical device</strong> and does not diagnose,
+          treat, cure, prevent, or monitor any disease or medical condition.
+        </p>
+        <p>
+          Senua is not a healthcare provider, dietitian, emergency service, or substitute
+          for professional medical, nutritional, psychological, or other healthcare advice.
+        </p>
+        <p>
+          Never disregard professional advice or delay seeking care because of information
+          shown by Senua. Contact an appropriate healthcare professional for health concerns
+          and local emergency services for emergencies.
+        </p>
+      </section>
+
+      <section id="acceptable-use">
+        <h2>10. Acceptable Use</h2>
+        <p>You must not:</p>
+        <ul>
+          <li>Use Senua for an unlawful, fraudulent, deceptive, or harmful purpose;</li>
+          <li>Attempt to gain unauthorized access to accounts, systems, data, or credentials;</li>
+          <li>Bypass subscriptions, quotas, rate limits, permissions, or security controls;</li>
+          <li>Automate excessive requests, scrape the service, or overload its infrastructure;</li>
+          <li>Reverse engineer, decompile, modify, or create derivative works except where law expressly permits;</li>
+          <li>Upload malware, harmful code, infringing content, or content violating another person's rights;</li>
+          <li>Use Senua or its outputs to train, benchmark, or build a competing product without written permission;</li>
+          <li>Resell, transfer, sublicense, or commercially exploit access to Senua;</li>
+          <li>Misrepresent Senua output as medical, clinical, or professionally verified advice.</li>
+        </ul>
+      </section>
+
+      <section id="subscriptions">
+        <h2>11. Subscriptions and Paid Features</h2>
+        <p>
+          Certain features require a paid subscription. Prices, billing periods, renewals,
+          cancellations, refunds, AI allowances, and related purchase conditions are governed
+          by the Senua Terms of Sale and the applicable Apple App Store or Google Play rules.
+        </p>
+        <p>
+          Deleting your Senua account or uninstalling the application does not automatically
+          cancel a store subscription.
+        </p>
+      </section>
+
+      <section id="third-parties">
+        <h2>12. Third-Party Services</h2>
+        <p>
+          Senua relies on third-party services, which may include Clerk, Convex, OpenAI,
+          RevenueCat, Apple, and Google. Their availability, terms, and technical operation
+          are outside our complete control.
+        </p>
+        <p>
+          Your use of Apple Health, Health Connect, App Store, Google Play, authentication,
+          payment, or other third-party services may also be subject to their own terms and
+          privacy policies.
+        </p>
+        <p>
+          Senua may include links to external services. We are not responsible for external
+          content, security, availability, or privacy practices.
+        </p>
+      </section>
+
+      <section id="ip">
+        <h2>13. Intellectual Property</h2>
+        <p>
+          Senua, its name, branding, interfaces, software, design elements, text, graphics,
+          functionality, prompts, and original content are owned by or licensed to
+          Coşkun Tıraş and are protected by applicable intellectual-property laws.
+        </p>
+        <p>
+          No right to use the Senua name, logo, trade dress, or proprietary material is
+          granted except for the limited application licence stated in these Terms.
+        </p>
+      </section>
+
+      <section id="availability">
+        <h2>14. Availability and Service Changes</h2>
+        <p>
+          We may update, modify, suspend, limit, replace, or discontinue any part of Senua,
+          including features, integrations, usage limits, supported devices, and AI providers.
+        </p>
+        <p>
+          We seek to provide a reliable service but do not guarantee uninterrupted,
+          error-free, or permanent availability. Maintenance, network conditions, device
+          limitations, third-party outages, security incidents, or legal requirements may
+          affect access.
+        </p>
+      </section>
+
+      <section id="termination">
+        <h2>15. Suspension and Termination</h2>
+        <p>
+          You may stop using Senua at any time and may request account deletion through the
+          available in-app process or the method described in the Privacy Policy.
+        </p>
+        <p>
+          We may restrict, suspend, or terminate access where reasonably necessary to:
+        </p>
+        <ul>
+          <li>Address a material or repeated breach of these Terms;</li>
+          <li>Protect users, systems, service providers, or third parties;</li>
+          <li>Prevent fraud, abuse, security threats, or unlawful activity;</li>
+          <li>Comply with legal or marketplace requirements;</li>
+          <li>Respond to non-payment or invalid subscription status for paid features.</li>
+        </ul>
+        <p>
+          Where reasonable and legally required, we will provide notice or an opportunity
+          to address the issue.
+        </p>
+      </section>
+
+      <section id="disclaimers">
+        <h2>16. Disclaimers</h2>
+        <p>
+          To the maximum extent permitted by law, Senua is provided on an “as is” and
+          “as available” basis. We do not guarantee that:
+        </p>
+        <ul>
+          <li>AI estimates, weekly stories, or user-entered records are accurate or complete;</li>
+          <li>The service will meet every personal goal or expectation;</li>
+          <li>All features will work on every device, platform, or region;</li>
+          <li>The service will always be uninterrupted, secure, or error-free;</li>
+          <li>Use of Senua will produce a health, wellness, weight, sleep, or longevity outcome.</li>
+        </ul>
+        <p>
+          Mandatory warranties and consumer rights that cannot legally be excluded remain unaffected.
+        </p>
+      </section>
+
+      <section id="liability">
+        <h2>17. Limitation of Liability</h2>
+        <p>
+          To the maximum extent permitted by applicable law, Coşkun Tıraş and Senua will not
+          be liable for indirect, incidental, special, exemplary, or consequential loss,
+          including loss arising from inaccurate AI output, user decisions, data entered
+          incorrectly, device failure, connectivity problems, or third-party services.
+        </p>
+        <p>
+          Nothing in these Terms excludes or limits liability that cannot legally be excluded,
+          including liability arising from fraud, wilful misconduct, or mandatory consumer law.
+        </p>
+      </section>
+
+      <section id="indemnity">
+        <h2>18. Indemnity</h2>
+        <p>
+          To the extent permitted by law, you agree to be responsible for losses, claims,
+          or expenses arising from your unlawful misuse of Senua, your infringement of
+          another person's rights, or content you submit in violation of these Terms.
+        </p>
+        <p>
+          This section does not limit any protection available to you under mandatory
+          consumer law.
+        </p>
+      </section>
+
+      <section id="law">
+        <h2>19. Governing Law and Disputes</h2>
+        <p>
+          These Terms are governed by the laws of Türkiye, without depriving you of
+          mandatory consumer protections that apply in your country of residence.
+        </p>
+        <p>
+          Before starting formal proceedings, you are encouraged to contact us to attempt
+          an informal resolution. Your right to apply to a competent authority, consumer
+          arbitration committee, court, or other legally available body remains unaffected.
+        </p>
+      </section>
+
+      <section id="changes">
+        <h2>20. Changes to These Terms</h2>
+        <p>
+          We may update these Terms when Senua's features, business model, legal obligations,
+          or third-party integrations change. The revised Terms will display a new
+          “Last updated” date.
+        </p>
+        <p>
+          Where required, we will provide additional notice. Continued use after an update
+          takes effect constitutes acceptance to the extent permitted by law.
+        </p>
+      </section>
+
+      <section id="contact">
+        <h2>21. Contact</h2>
+        <div class="contact">
+          <strong>Coşkun Tıraş</strong><br />
+          Senua<br />
+          Türkiye<br />
+          <a href="mailto:coskunntirass@gmail.com">coskunntirass@gmail.com</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>© 2026 Senua. All rights reserved.</footer>
+  </div>
+</body>
+</html>
