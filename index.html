@@ -53,15 +53,30 @@ h2.sec{margin:0;font:800 clamp(38px,6vw,64px)/.92 var(--f-display)}
 /* ---------- hero: the studio desk ---------- */
 .hero{
   position:relative;min-height:min(92vh,820px);display:flex;flex-direction:column;
-  background:#0A0D12 url("/assets/studio-desk-mobile.webp") center top/cover no-repeat;
+  background:#0A0D12;overflow:hidden;
 }
+.hero > .scene{position:absolute;inset:0;width:auto;z-index:0;pointer-events:none}
+.scene .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 0%;display:block}
+.scene canvas{position:absolute;inset:0;width:100%;height:100%}
+/* living desk: small lights that keep the room awake */
+.fx{position:absolute;left:0;top:0;width:0;height:0;transform:translate(-50%,-50%);mix-blend-mode:screen;opacity:0}
+.ready .fx{opacity:1;transition:opacity 1.2s ease 1s}
+.fx-lamp{background:radial-gradient(closest-side,rgba(255,196,120,.55),rgba(255,160,70,.18) 45%,transparent)}
+.fx-beacon{background:radial-gradient(closest-side,rgba(255,244,214,.95),rgba(255,214,150,.3) 35%,transparent)}
+.fx-beam{background:radial-gradient(50% 50% at 50% 50%,rgba(255,232,190,.32),transparent 100%)}
+.fx-radar{border-radius:50%;
+  background:conic-gradient(from 0deg,transparent 0deg 290deg,rgba(143,227,168,.10) 320deg,rgba(143,227,168,.45) 356deg,rgba(225,255,232,.8) 360deg);
+  -webkit-mask:radial-gradient(closest-side,#000 92%,transparent);mask:radial-gradient(closest-side,#000 92%,transparent)}
+.fx-vu{background:radial-gradient(closest-side,rgba(255,176,86,.6),transparent)}
+.hero::before{z-index:1}
+.hero > .top,.hero > .hero-copy{z-index:2}
 .hero::before{ /* keep text readable over the photo */
   content:"";position:absolute;inset:0;pointer-events:none;
   background:linear-gradient(180deg,rgba(10,13,18,.55) 0%,rgba(10,13,18,0) 22%,rgba(10,13,18,.35) 45%,rgba(17,22,31,.96) 78%,var(--night) 100%);
 }
 .hero > *{position:relative;width:100%}
 .top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:20px}
-.brand{display:flex;align-items:center;gap:10px;font:800 22px/1 var(--f-display);letter-spacing:.02em;text-decoration:none;color:var(--bone)}
+.brand{display:flex;align-items:center;gap:10px;white-space:nowrap;font:800 22px/1 var(--f-display);letter-spacing:.02em;text-decoration:none;color:var(--bone)}
 .brand svg{width:28px;height:28px;flex:none}
 .top nav{display:flex;gap:22px;font-size:15px}
 .top nav a{color:var(--bone);opacity:.8;text-decoration:none}
@@ -157,7 +172,8 @@ footer nav span{color:rgba(236,230,214,.45)}
 footer a{color:var(--dust)}
 
 @media (min-width:700px){
-  .hero{background-image:url("/assets/studio-desk.webp");background-position:62% 40%;min-height:min(88vh,860px)}
+  .hero{min-height:min(88vh,860px)}
+  .scene .bg{object-position:62% 40%}
   .hero::before{background:
     linear-gradient(90deg,rgba(10,13,18,.92) 0%,rgba(10,13,18,.72) 34%,rgba(10,13,18,.1) 62%,rgba(10,13,18,0) 100%),
     linear-gradient(180deg,rgba(10,13,18,0) 60%,var(--night) 100%)}
@@ -173,20 +189,60 @@ footer a{color:var(--dust)}
 @media (max-width:520px){
   .top nav{gap:16px;font-size:14px}
   .top nav a.hide-s{display:none}
+  .snd span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
   .ch{font-size:15px;padding:6px 4px 8px}
   .ch .n{display:none}
   .freqs span:nth-child(even){visibility:hidden}
 }
 @media (prefers-reduced-motion:reduce){.needle{transition:none}}
 @media (prefers-reduced-motion:no-preference){
-  /* the one orchestrated moment: the hero lamp warms up as the page opens */
-  .hero{animation:lamp 1.6s ease-out both}
-  @keyframes lamp{from{filter:brightness(.45) saturate(.6)}to{filter:none}}
+  /* opening: the room warms up, then the signal locks in */
+  .scene .bg{animation:warm 1.8s ease-out both}
+  @keyframes warm{from{filter:brightness(.4) saturate(.6)}to{filter:none}}
+  .fx-lamp{animation:flicker 7s infinite}
+  @keyframes flicker{0%,100%{opacity:.8}8%{opacity:.92}9%{opacity:.55}10.5%{opacity:.88}46%{opacity:.82}47%{opacity:.5}48.5%{opacity:.9}72%{opacity:.76}}
+  .fx-beacon{animation:pulse 5s ease-in-out infinite}
+  .fx-beam{animation:beam 5s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:.35}50%{opacity:1}}
+  @keyframes beam{0%,100%{opacity:0;transform:translate(-50%,-50%) scaleX(.15)}50%{opacity:1;transform:translate(-50%,-50%) scaleX(1)}}
+  .fx-radar{animation:sweep 4.5s linear infinite}
+  @keyframes sweep{from{transform:translate(-50%,-50%) rotate(0deg)}to{transform:translate(-50%,-50%) rotate(360deg)}}
+  .fx-vu{animation:vu 2.6s infinite}
+  .fx-vu.b{animation-duration:3.3s;animation-delay:-1.1s}
+  @keyframes vu{0%,100%{opacity:.55}20%{opacity:.9}35%{opacity:.6}60%{opacity:1}80%{opacity:.7}}
+  .js-reveal h1 .l{opacity:0;animation:lock .55s steps(1,end) forwards}
+  @keyframes lock{0%{opacity:0}25%{opacity:.85}40%{opacity:.12}60%{opacity:1}78%{opacity:.4}100%{opacity:1}}
+  .js-reveal .lede .c{opacity:0}
+  .js-reveal .lede .c.on{opacity:1}
 }
+@media (prefers-reduced-motion:reduce){.fx{display:none}}
+h1 .w{white-space:nowrap}
+/* sound toggle */
+.snd{display:inline-flex;align-items:center;gap:7px;background:transparent;border:0;color:var(--bone);opacity:.8;font:inherit;font-size:15px;cursor:pointer;padding:0}
+.snd:hover{opacity:1}
+.snd svg{width:18px;height:18px}
+.snd .on{display:none}
+.snd[aria-pressed="true"]{opacity:1;color:var(--lamp)}
+.snd[aria-pressed="true"] .on{display:inline}
+.snd[aria-pressed="true"] .off{display:none}
 </style>
 </head>
 <body>
 <header class="hero">
+  <div class="scene" aria-hidden="true">
+    <picture>
+      <source media="(max-width:699px)" srcset="/assets/studio-desk-mobile.webp">
+      <img class="bg" src="/assets/studio-desk.webp" alt="" width="1672" height="941" fetchpriority="high">
+    </picture>
+    <canvas id="rain"></canvas>
+    <div class="fx fx-beam" data-at="1110,157,560,26"></div>
+    <div class="fx fx-beacon" data-at="1110,157,90,90"></div>
+    <div class="fx fx-lamp" data-at="1350,385,420,360"></div>
+    <div class="fx fx-radar" data-at="1493,515,176,176"></div>
+    <div class="fx fx-vu" data-at="813,480,80,52"></div>
+    <div class="fx fx-vu b" data-at="892,476,80,52"></div>
+    <div class="fx fx-vu b" data-at="943,468,34,34"></div>
+  </div>
   <div class="wrap top">
     <a class="brand" href="/" aria-label="CGT Software home">
       <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#19202C"/><path d="M9 24h14" stroke="#ECE6D6" stroke-width="2" stroke-linecap="round"/><path d="M12 24 18 10l5 4" fill="none" stroke="#ECE6D6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M23 14l-5 6h8z" fill="#F2A93B"/></svg>
@@ -196,6 +252,10 @@ footer a{color:var(--dust)}
       <a href="#games">Games</a>
       <a href="#wall" class="hide-s">Studio</a>
       <a href="#contact">Contact</a>
+      <button class="snd" type="button" id="snd" aria-pressed="false" title="Rain and radio ambience">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor"/><g class="on" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M16 9a4 4 0 0 1 0 6"/><path d="M18.5 6.5a7.5 7.5 0 0 1 0 11"/></g><g class="off" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M16 9l5 6M21 9l-5 6"/></g></svg>
+        <span>Sound</span>
+      </button>
     </nav>
   </div>
   <div class="wrap hero-copy">
@@ -350,6 +410,105 @@ footer a{color:var(--dust)}
   </nav>
 </footer>
 <script>
+/* ---------- living desk ---------- */
+(function(){
+  var hero=document.querySelector(".hero"),scene=hero.querySelector(".scene"),img=scene.querySelector(".bg");
+  var fx=[].slice.call(scene.querySelectorAll(".fx"));
+  var reduce=matchMedia("(prefers-reduced-motion:reduce)");
+  var WINS=[[805,80,1240,440],[1340,80,1445,300]]; /* window panes, image px */
+  var map=null;
+  function layout(){
+    var W=scene.clientWidth,H=scene.clientHeight,nw=img.naturalWidth,nh=img.naturalHeight;
+    if(!nw||!W)return;
+    var mobile=/mobile/.test(img.currentSrc||img.src),offX=mobile?880:0;
+    var pos=getComputedStyle(img).objectPosition.split(" ").map(function(v){return parseFloat(v)/100});
+    var s=Math.max(W/nw,H/nh),ox=(W-nw*s)*pos[0],oy=(H-nh*s)*pos[1];
+    map={s:s,f:function(x,y){return[ox+(x-offX)*s,oy+y*s]}};
+    fx.forEach(function(el){
+      var a=el.dataset.at.split(",").map(Number),p=map.f(a[0],a[1]);
+      el.style.left=p[0]+"px";el.style.top=p[1]+"px";el.style.width=a[2]*s+"px";el.style.height=a[3]*s+"px";
+    });
+    sizeRain();
+  }
+  /* rain on the window panes */
+  var cv=document.getElementById("rain"),ctx=cv.getContext("2d"),drops=[],dpr=Math.min(2,window.devicePixelRatio||1),running=false,visible=true;
+  function sizeRain(){
+    cv.width=scene.clientWidth*dpr;cv.height=scene.clientHeight*dpr;
+    drops=[];if(!map)return;
+    WINS.forEach(function(w){
+      var a=map.f(w[0],w[1]),b=map.f(w[2],w[3]),area=(b[0]-a[0])*(b[1]-a[1]),n=Math.max(0,Math.round(area/2600));
+      for(var i=0;i<n;i++)drops.push({x0:a[0],x1:b[0],y0:a[1],y1:b[1],x:a[0]+Math.random()*(b[0]-a[0]),y:a[1]+Math.random()*(b[1]-a[1]),v:3+Math.random()*4,l:6+Math.random()*12,o:.08+Math.random()*.22});
+    });
+  }
+  function tick(){
+    if(!running)return;
+    ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,cv.width,cv.height);
+    ctx.lineWidth=1;ctx.lineCap="round";
+    for(var i=0;i<drops.length;i++){
+      var d=drops[i];d.y+=d.v;d.x-=d.v*.12;
+      if(d.y>d.y1||d.x<d.x0){d.y=d.y0-Math.random()*20;d.x=d.x0+Math.random()*(d.x1-d.x0)}
+      ctx.strokeStyle="rgba(200,215,235,"+d.o+")";
+      ctx.beginPath();ctx.moveTo(d.x,Math.max(d.y0,d.y-d.l));ctx.lineTo(d.x+d.l*.12,Math.max(d.y0,d.y));ctx.stroke();
+    }
+    requestAnimationFrame(tick);
+  }
+  function setRun(){var r=visible&&!document.hidden&&!reduce.matches;if(r&&!running){running=true;requestAnimationFrame(tick)}else if(!r){running=false;ctx.clearRect(0,0,cv.width,cv.height)}}
+  if("IntersectionObserver" in window)new IntersectionObserver(function(e){visible=e[0].isIntersecting;setRun()}).observe(hero);
+  document.addEventListener("visibilitychange",setRun);
+  function start(){layout();hero.classList.add("ready");setRun()}
+  if(img.complete&&img.naturalWidth)start();else img.addEventListener("load",start);
+  var rt;window.addEventListener("resize",function(){clearTimeout(rt);rt=setTimeout(layout,120)});
+})();
+
+/* ---------- signal lock: headline flickers in, lede comes through like a transmission ---------- */
+(function(){
+  if(matchMedia("(prefers-reduced-motion:reduce)").matches)return;
+  var h=document.querySelector(".hero h1"),lede=document.querySelector(".hero .lede");
+  document.documentElement.classList.add("js-reveal");
+  var text=h.textContent;h.setAttribute("aria-label",text);h.textContent="";
+  var k=0;
+  text.split(" ").forEach(function(word,wi,arr){
+    var w=document.createElement("span");w.className="w";w.setAttribute("aria-hidden","true");
+    for(var i=0;i<word.length;i++){var l=document.createElement("span");l.className="l";l.textContent=word[i];l.style.animationDelay=(500+k*28+Math.random()*260)+"ms";w.appendChild(l);k++}
+    h.appendChild(w);if(wi<arr.length-1)h.appendChild(document.createTextNode(" "));
+  });
+  var t=lede.textContent;lede.textContent="";
+  var cs=[];for(var i=0;i<t.length;i++){var c=document.createElement("span");c.className="c";c.textContent=t[i];lede.appendChild(c);cs.push(c)}
+  var n=0;setTimeout(function(){var iv=setInterval(function(){for(var j=0;j<3&&n<cs.length;j++)cs[n++].classList.add("on");if(n>=cs.length)clearInterval(iv)},16)},1500);
+})();
+
+/* ---------- ambience: rain and a distant radio, off until you ask ---------- */
+(function(){
+  var btn=document.getElementById("snd"),ac=null,master=null,timer=null,on=false;
+  function noise(len){var b=ac.createBuffer(1,ac.sampleRate*len,ac.sampleRate),d=b.getChannelData(0),last=0;for(var i=0;i<d.length;i++){var w=Math.random()*2-1;last=(last+.02*w)/1.02;d[i]=w*.6+last*2.4}return b}
+  function loop(buf,type,f,q,g){var s=ac.createBufferSource();s.buffer=buf;s.loop=true;var fl=ac.createBiquadFilter();fl.type=type;fl.frequency.value=f;fl.Q.value=q;var gn=ac.createGain();gn.gain.value=g;s.connect(fl).connect(gn).connect(master);s.start()}
+  function burst(){
+    if(!on)return;
+    var now=ac.currentTime,dur=.35+Math.random()*1.1;
+    var s=ac.createBufferSource();s.buffer=noiseBuf;var bp=ac.createBiquadFilter();bp.type="bandpass";bp.frequency.value=1400+Math.random()*900;bp.Q.value=1.4;
+    var g=ac.createGain();g.gain.setValueAtTime(0,now);g.gain.linearRampToValueAtTime(.05,now+.04);g.gain.setValueAtTime(.05,now+dur);g.gain.linearRampToValueAtTime(0,now+dur+.08);
+    s.connect(bp).connect(g).connect(master);s.start(now,Math.random());s.stop(now+dur+.1);
+    if(Math.random()<.5){var o=ac.createOscillator(),og=ac.createGain();o.frequency.value=1050;og.gain.setValueAtTime(0,now+dur+.12);og.gain.linearRampToValueAtTime(.018,now+dur+.13);og.gain.setValueAtTime(.018,now+dur+.2);og.gain.linearRampToValueAtTime(0,now+dur+.21);o.connect(og).connect(master);o.start(now+dur+.1);o.stop(now+dur+.25)}
+    timer=setTimeout(burst,7000+Math.random()*9000);
+  }
+  var noiseBuf;
+  function init(){
+    var AC=window.AudioContext||window.webkitAudioContext;if(!AC)return false;
+    ac=new AC();master=ac.createGain();master.gain.value=0;master.connect(ac.destination);
+    noiseBuf=noise(3);
+    loop(noiseBuf,"highpass",900,.4,.10);  /* rain hiss */
+    loop(noiseBuf,"lowpass",420,.5,.14);   /* rain body */
+    return true;
+  }
+  btn.addEventListener("click",function(){
+    if(!ac&&!init())return;
+    on=!on;btn.setAttribute("aria-pressed",on?"true":"false");
+    if(ac.state==="suspended")ac.resume();
+    var now=ac.currentTime;master.gain.cancelScheduledValues(now);master.gain.setValueAtTime(master.gain.value,now);master.gain.linearRampToValueAtTime(on?.9:0,now+(on?1.5:.5));
+    clearTimeout(timer);if(on)timer=setTimeout(burst,2500);
+  });
+})();
+
 (function(){
   var series=document.querySelector(".series");
   var tabs=[].slice.call(document.querySelectorAll(".ch"));
