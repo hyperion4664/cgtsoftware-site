@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>CGT Software</title>
-<meta name="description" content="CGT Software is an independent game studio. Our games include the Signal Station series: Case Files, Live and Dispatch.">
+<meta name="description" content="CGT Software is an independent game studio. Our games include the Signal Station series (Case Files, Live and Dispatch) and Inquest: Port Ellery.">
 <meta property="og:title" content="CGT Software">
 <meta property="og:description" content="An independent game studio making quiet, thoughtful games for phones.">
 <meta property="og:type" content="website">
@@ -147,6 +147,14 @@ h1{margin:0;max-width:12ch;font:800 clamp(52px,11.5vw,128px)/.88 var(--f-display
 
 /* the slot for whatever comes next, outside the series */
 .next{margin-top:20px;border:1.5px dashed var(--rule);border-radius:22px;padding:26px 20px;display:grid;gap:8px 28px;grid-template-columns:minmax(0,1fr);align-items:center}
+.solo{margin-top:20px;background:var(--deck);border:1px solid var(--rule);border-radius:22px;padding:22px 18px 20px;display:grid;gap:20px;grid-template-columns:minmax(0,1fr);align-items:center}
+.solo h3{margin:0;font:800 clamp(34px,5.5vw,52px)/.92 var(--f-display)}
+.solo h3 small{display:block;font:700 .5em/1 var(--f-display);color:var(--dust);margin-bottom:6px;letter-spacing:.02em}
+.solo .status{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font-size:14px;font-weight:500;color:var(--lamp)}
+.solo .status i{width:8px;height:8px;border-radius:50%;background:var(--lamp);box-shadow:0 0 8px var(--lamp)}
+.solo p{margin:14px 0 0;max-width:52ch}
+.solo p.meta{color:var(--dust);font-size:15px}
+.solo img{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--rule)}
 .next h3{margin:0;font:800 30px/1 var(--f-display);color:var(--dust)}
 .next p{margin:0;color:var(--dust);max-width:56ch}
 
@@ -184,6 +192,7 @@ footer a{color:var(--dust)}
   .band{height:128px}
   .game{grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);align-items:start;gap:40px}
   .next{grid-template-columns:minmax(0,.6fr) minmax(0,1fr);padding:30px 28px}
+  .solo{grid-template-columns:minmax(0,1fr) minmax(0,1fr);padding:26px 24px}
   .studio{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:56px}
 }
 @media (max-width:520px){
@@ -369,9 +378,19 @@ h1 .w{white-space:nowrap}
       </div>
     </div>
 
-    <div class="next">
-      <h3>Next on the desk</h3>
-      <p>A new game outside the Signal Station series is taking shape. It gets its own page here when it is ready to show.</p>
+    <div class="solo">
+      <div>
+        <h3><small>A separate game</small>Inquest: Port Ellery</h3>
+        <div class="status"><i></i>In development</div>
+        <p>It is 1888 and a harbour town has a coroner. Read the ledgers, registers and doctors' notes, link the facts, and write down only what the records support. No chases, no confessions to extract.</p>
+        <p class="meta">Ten cases written so far. Not part of the Signal Station series.</p>
+        <div class="links">
+          <a class="pill" href="/inquest/">See the game</a>
+          <a href="/inquest/support/">Support</a>
+          <a href="/inquest/privacy/">Privacy policy</a>
+        </div>
+      </div>
+      <img src="/assets/inquest/cover.webp" width="1400" height="782" loading="lazy" decoding="async" alt="A burial club office at night: an open ledger, four receipts in a row, an oil lamp and a rain-streaked harbour window.">
     </div>
   </section>
 
@@ -414,6 +433,11 @@ h1 .w{white-space:nowrap}
     <a href="/signalstation-live/support/">Support</a>
     <a href="/signalstation-live/privacy/">Privacy</a>
     <a href="/signalstation-live/terms/">Terms</a>
+  </nav>
+  <nav aria-label="Inquest: Port Ellery">
+    <span>Inquest: Port Ellery</span>
+    <a href="/inquest/support/">Support</a>
+    <a href="/inquest/privacy/">Privacy</a>
   </nav>
   <nav aria-label="Exerank">
     <span>Exerank</span>
